@@ -3,3 +3,5 @@
 data
 videos
 test
+record/*.ts
+record/*.m3u8

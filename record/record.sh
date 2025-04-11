@@ -1,9 +1,16 @@
+#clean
+rm -f *.ts
+rm -f *.m3u8
+
+# This script records an RTSP stream using FFmpeg and saves it as an HLS playlist.
 export rtspUrl="rtsp://localhost:8554/mystream"
 export segmentPattern="segment%03d.ts"
 export outputPath="output.m3u8"
 
 ffmpeg \
 -rtsp_transport tcp \
+-fflags +discardcorrupt \
+-err_detect ignore_err \    
 -i $rtspUrl \
 -c:v libx264 \
 -preset ultrafast \
